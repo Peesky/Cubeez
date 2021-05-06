@@ -24,6 +24,7 @@ def fond():
 
 Game=game()
 while True:
+    Game.playtheme()
     while Game.game:
         screen.fill(backC)
         fond()

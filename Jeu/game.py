@@ -11,6 +11,8 @@ class game():
         self.Nombre=0
         self.size=pygame.display.get_window_size()
         self.game=True
+
+        
     
     def afficherimgmenu(self):
         self.icone=pygame.transform.scale(pygame.image.load("Cubeez/JEU/iconn.PNG"),(440,130))
@@ -32,6 +34,10 @@ class game():
         score = font.render("BEST SCORE : " + str(score), True, (0,0,0))
         screen.blit(score, (x,y))
 
+    def playtheme(self):
+        pygame.mixer.init()
+        pygame.mixer.music.load("Cubeez/JEU/Cubeez_theme.mp3")
+        pygame.mixer.music.play(-1)
 
     def upd(self,screen):
         self.size=pygame.display.get_window_size()
@@ -49,3 +55,5 @@ class game():
         self.size=pygame.display.get_window_size()
         self.afficherimgmenu()
         screen.blit(self.icone,self.rect)
+
+    
