@@ -5,9 +5,9 @@ from game import *
 #from sprites import *
 
 pygame.init()
-gameIcon = pygame.image.load('Assets\iconn.PNG')
+gameIcon = pygame.image.load("Assets\icon.png")
 pygame.display.set_icon(gameIcon)
-pygame.display.set_caption("")
+pygame.display.set_caption("ubeez")
 screen=pygame.display.set_mode((720,500), pygame.RESIZABLE)
 backC=pygame.color.Color("#FFFFFF")
 jeu=True
@@ -29,9 +29,6 @@ while True:
         while Game.game:
             screen.fill(backC)
             fond()
-            
-            
-            
             Game.upd(screen)
 
             time.sleep(0.02)
