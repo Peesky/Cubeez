@@ -8,6 +8,7 @@ class pl():
         self.ret=None
         self.rec=pygame.Rect(self.x,self.y,20,20)
         self.score=0
+        self.gogame =True
 
         self.mx=self.x+5
         self.my=self.y+5
@@ -26,10 +27,10 @@ class pl():
         if self.ret=="g" and self.x >0:
             self.x-=self.vitesse  
 
-    def touches(self):
+    def touches(self,):
         for event in pygame.event.get():
             if event.type==pygame.QUIT:
-                game=False
+                self.gogame=False
                 pygame.quit()
             if event.type==pygame.KEYDOWN:
                 if event.key == pygame.K_RIGHT:
@@ -50,7 +51,7 @@ class pl():
         screen.blit(score, (0,0))
 
     def verifybestscore(self):
-        fic = open("Cubeez/playerdata.txt", "r")
+        fic = open("playerdata.txt", "r")
         score=fic.read()
         fic.close()
         if self.score >int(score):
@@ -81,7 +82,6 @@ class pl():
         pygame.draw.rect(screen,'red',self.mrect)
         
         self.bouger(Game)
-        self.touches()
         self.afficherscre(screen)
         self.rec=pygame.Rect(self.x,self.y,20,20)
         pygame.draw.rect(screen,'black',self.rec)

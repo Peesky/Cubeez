@@ -5,13 +5,12 @@ from game import *
 #from sprites import *
 
 pygame.init()
-gameIcon = pygame.image.load("Cubeez/JEU/icon.PNG")
+gameIcon = pygame.image.load('Assets\iconn.PNG')
 pygame.display.set_icon(gameIcon)
 pygame.display.set_caption("")
 screen=pygame.display.set_mode((720,500), pygame.RESIZABLE)
 backC=pygame.color.Color("#FFFFFF")
 jeu=True
-
 
 
 def fond():
@@ -24,26 +23,30 @@ def fond():
 
 Game=game()
 while True:
-    Game.playtheme()
-    while Game.game:
-        screen.fill(backC)
-        fond()
-        #Game.player.afficherscre()
+    if Game.menu.music:
+        Game.playtheme()
+    try:
+        while Game.game:
+            screen.fill(backC)
+            fond()
+            
+            
+            
+            Game.upd(screen)
+
+            time.sleep(0.02)
+            pygame.display.flip()
+            
+            Game.player.touches()      
+        while not Game.game:
+            screen.fill(backC)
+            Game.update(screen)
+            time.sleep(0.02)
+            pygame.display.flip()
+            for event in pygame.event.get():
+                if event.type==pygame.QUIT:
+                    pygame.quit()
+    except:
+        pass
         
-        Game.player.touches()
-        Game.upd(screen)
-
-        time.sleep(0.02)
-        pygame.display.flip()
-
-    while not Game.game:
-
-        for event in pygame.event.get():
-            if event.type==pygame.QUIT:
-                game=False
-                pygame.quit()
-        screen.fill(backC)
-        Game.update(screen)
-        time.sleep(0.02)
-        pygame.display.flip()
     
